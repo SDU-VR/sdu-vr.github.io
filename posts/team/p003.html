@@ -5,22 +5,22 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="山东大学, 虚拟现实, VR">
+    <meta name="description" content="VR">
     <meta name="author" content="ING VR团队">
 
-    <title>SDU-VR</title>
+    <title>VR实训项目规划（Unity项目搭建篇）</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Additional fonts for this theme -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this theme -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
-    <link href="css/global.css" rel="stylesheet">
+    <link href="../../css/clean-blog.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
 
     <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
     <style>
@@ -45,17 +45,17 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand page-scroll" href="index.html">SDU-VR</a>
+            <a class="navbar-brand page-scroll" href="../../index.html">SDU-VR</a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#">Home</a>
+                        <a class="nav-link page-scroll" href="../../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="project.html">Project</a>
+                        <a class="nav-link page-scroll" href="../../project.html">Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="members.html">Members</a>
+                        <a class="nav-link page-scroll" href="../../members.html">Members</a>
                     </li>
                 </ul>
             </div>
@@ -63,55 +63,75 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+    <header class="intro-header" style="background-image: url('img/p003-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                    <div class="site-heading">
-                        <h1>SDU-VR</h1>
-                        <span class="subheading">基于HTC vive 的VR场景遍历及环境互动项目</span>
+                    <div class="post-heading">
+                        <h1>VR实训项目规划</h1>
+                        <h2 class="subheading">Unity项目搭建篇</h2>
+                        <span class="meta">提交于 2017/05/14</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                <div class="post-preview">
-                    <a href="posts/team/p003.html">
-                        <h2 class="post-title">
-                            VR实训项目规划
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Unity项目搭建篇
-                        </h3>
-                    </a>
-                    <p class="post-meta">提交于 2017/05/14</p>
-                </div>
-                <hr />
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <p>
+                        开发环境
+                    </p>
 
-                <div class="post-preview">
-                    <a href="posts/team/p002.html">
-                        <h2 class="post-title">
-                            VR实训项目规划
-                        </h2>
-                        <h3 class="post-subtitle">
-                            3D场景篇
-                        </h3>
+                    <ul>
+                        <li>
+                            Unity 5.5.1f1 Personal (64bit)
+                        </li>
+                        <li>
+                            Visual Studio Community 2015
+                        </li>
+                    </ul>
+
+                    <p>
+                        第三方库
+                    </p>
+
+                    <ul>
+                        <li>
+                            SteamVR Plugin 1.2.1
+                        </li>
+                        <li>
+                            VRTK - Virtual Reality Toolkit 3.1.0
+                        </li>
+                    </ul>
+
+                    <p>
+                        新建Unity3D项目并引入Asset Packages
+                    </p>
+
+                    <p>
+                        打开VRTK/Examples/001_CameraRig_VR_PlayArea场景
+                    </p>
+
+                    <p>
+                        将该场景另存为Scene/Main.unity。
+                    </p>
+
+                    <a href="img/p003-scene.jpg">
+                        <img class="img-responsive" src="img/p003-scene.jpg" alt="搭建好的场景">
                     </a>
-                    <p class="post-meta">提交于 2017/05/13</p>
-                </div>
-                <hr />
-                <!-- Pager -->
-                <div class="clearfix">
-                    <a class="btn btn-secondary float-right" href="posts/index/1.html">项目动态 &rarr;</a>
+                    <span class="caption text-muted">搭建完成的Unity3D SteamVR场景</span>
+
+                    <p>
+                        已将项目上传至GitHub，可以点击下方GitHub图标前往GitHub仓库查看。
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 
     <hr>
 
@@ -137,16 +157,16 @@
     </footer>
 
     <!-- jQuery Version 3.1.1 -->
-    <script src="lib/jquery/jquery.js"></script>
+    <script src="../../lib/jquery/jquery.js"></script>
 
     <!-- Tether -->
-    <script src="lib/tether/tether.min.js"></script>
+    <script src="../../lib/tether/tether.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+    <script src="../../js/clean-blog.min.js"></script>
 
 </body>
 
