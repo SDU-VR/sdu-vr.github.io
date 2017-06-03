@@ -5,10 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="山东大学, 虚拟现实, VR">
+    <meta name="description" content="VR">
     <meta name="author" content="ING VR团队">
 
-    <title>项目动态 - SDU-VR</title>
+    <title>VR实训项目Demo: 触摸板移动</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -63,109 +63,74 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="intro-header" style="background-image: url('img/index-bg.jpg')">
+    <header class="intro-header" style="background-image: url('../../img/post-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                    <div class="site-heading">
-                        <h1>项目动态</h1>
-                        <span class="subheading">基于HTC vive 的VR场景遍历及环境互动项目</span>
+                    <div class="post-heading">
+                        <h1>VR实训项目Demo</h1>
+                        <h2 class="subheading">触摸板移动</h2>
+                        <span class="meta">提交于 2017/05/20</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                <div class="post-preview">
-                    <a href="../../posts/team/p004.html">
-                        <h2 class="post-title">
-                            VR实训项目阶段性报告
-                        </h2>
-                        <h3 class="post-subtitle">
-                            场景搭建
-                        </h3>
-                    </a>
-                    <p class="post-meta">提交于 2017/05/30</p>
-                </div>
-                <hr />
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <p>
+                        为了丰富我们的项目，考虑在项目中加入触摸板移动的功能。因此实现一个触摸移动的Demo以供以后使用。
+                    </p>
 
-                <div class="post-preview">
-                    <a href="../../posts/team/p006.html">
-                        <h2 class="post-title">
-                            VR实训项目Demo
-                        </h2>
-                        <h3 class="post-subtitle">
-                            触摸板移动
-                        </h3>
-                    </a>
-                    <p class="post-meta">提交于 2017/05/20</p>
-                </div>
-                <hr />
+                    <p>
+                        这个Demo中使用的技术包括：
+                    </p>
 
-                <div class="post-preview">
-                    <a href="../../posts/team/p005.html">
-                        <h2 class="post-title">
-                            VR实训项目Demo
-                        </h2>
-                        <h3 class="post-subtitle">
-                            传送移动
-                        </h3>
-                    </a>
-                    <p class="post-meta">提交于 2017/05/18</p>
-                </div>
-                <hr />
+                    <ul>
+                        <li>Headset Collision</li>
+                        <li><a href="http://blog.csdn.net/a514335188/article/details/72853011" target="_blank">Touchpad Control</a></li>
+                    </ul>
 
-                <div class="post-preview">
-                    <a href="../../posts/team/p003.html">
-                        <h2 class="post-title">
-                            VR实训项目规划
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Unity项目搭建篇
-                        </h3>
-                    </a>
-                    <p class="post-meta">提交于 2017/05/14</p>
-                </div>
-                <hr />
+                    <p>
+                        具体每个技术的细节可以参考指向的个人博客。
+                    </p>
 
-                <div class="post-preview">
-                    <a href="../../posts/team/p002.html">
-                        <h2 class="post-title">
-                            VR实训项目规划
-                        </h2>
-                        <h3 class="post-subtitle">
-                            3D场景篇
-                        </h3>
-                    </a>
-                    <p class="post-meta">提交于 2017/05/13</p>
-                </div>
-                <hr />
+                    <hr>
 
-                <div class="post-preview">
-                    <a href="../../posts/team/p001.html">
-                        <h2 class="post-title">
-                            2017山大日记
-                        </h2>
-                        <h3 class="post-subtitle">
-                            与总理面对面学生团队 ING VR团队
-                        </h3>
-                    </a>
-                    <p class="post-meta">提交于 2017/04/22</p>
-                </div>
-                <hr />
+                    <h4>
+                        Demo场景展示：
+                    </h4>
 
-                <!-- Pager -->
-                <div class="clearfix">
-                    <a class="btn btn-sm disabled" href="#">1</a>
-                    <a class="btn btn-secondary float-right" href="#">下一页 &rarr;</a>
+                    <p>
+                        <a href="img/p006-1.jpg">
+                            <img class="img-responsive" src="img/p005-1.jpg" alt="Demo场景">
+                        </a>
+                        <span class="caption text-muted">Demo场景</span>
+
+                        <a href="img/p006-2.jpg">
+                            <img class="img-responsive" src="img/p005-2.jpg" alt="场景的Hierarchy结构">
+                        </a>
+                        <span class="caption text-muted">场景的Hierarchy结构</span>
+                    </p>
+
+                    <hr>
+
+                    <h4>
+                        场景中的功能说明：
+                    </h4>
+
+                    <p>
+                        通过在左手手柄的触摸板上滑动手指来实现移动。<br>
+                        如果与墙壁等障碍物发生碰撞则立即传送会最近的一个正常位置。
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 
     <hr>
 
