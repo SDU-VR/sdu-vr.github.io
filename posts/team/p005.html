@@ -8,7 +8,7 @@
     <meta name="description" content="VR">
     <meta name="author" content="ING VR团队">
 
-    <title>VR实训项目场景搭建阶段性报告</title>
+    <title>VR实训项目Demo: 传送移动</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -63,14 +63,14 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="intro-header" style="background-image: url('img/p004-bg.jpg')">
+    <header class="intro-header" style="background-image: url('../../img/post-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
                     <div class="post-heading">
-                        <h1>VR实训项目阶段性报告</h1>
-                        <h2 class="subheading">场景搭建</h2>
-                        <span class="meta">提交于 2017/05/30</span>
+                        <h1>VR实训项目Demo</h1>
+                        <h2 class="subheading">传送移动</h2>
+                        <span class="meta">提交于 2017/05/18</span>
                     </div>
                 </div>
             </div>
@@ -83,55 +83,51 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
                     <p>
-                        首先，展示一下我们这段时间的总体成果（鼓掌）
-                        <a href="img/p004-1.png">
-                            <img class="img-responsive" src="img/p004-1.png" alt="总体成果">
-                        </a>
-                        <span class="caption text-muted">目前场景建模的总体成果</span>
+                        根据前段时间的学习成果，现实现一个传送Demo为之后项目做好准备。
                     </p>
 
                     <p>
-                        我们根据现有的各楼层的平面设计图，严格按照尺寸比例重建了每一层的平面结构；进行面挤出后将墙壁建立起来。
+                        这个Demo中使用的技术包括：
                     </p>
 
-                    <p>
-                        <a href="img/p004-2.png">
-                            <img class="img-responsive" src="img/p004-2.png" alt="天花板内部结构">
-                        </a>
-                        <span class="caption text-muted">天花板内部结构</span>
-                        这是三区教学楼大厅的天花板内部结构，这里我们通过真实照片（见下图）来进行的还原工作。
-                        <a href="img/p004-3.jpg">
-                            <img class="img-responsive" src="img/p004-3.jpg" alt="天花板内部结构真实照片">
-                        </a>
-                        <span class="caption text-muted">天花板内部结构真实照片</span>
-                    </p>
+                    <ul>
+                        <li><a href="http://blog.csdn.net/a514335188/article/details/72794885#t1" target="_blank">NavMesh Teleport</a></li>
+                        <li><a href="http://blog.csdn.net/a514335188/article/details/72794885#t4" target="_blank">Dash Teleport</a></li>
+                        <li><a href="http://blog.csdn.net/a514335188/article/details/72597698#t1" target="_blank">Bezier Pointer</a></li>
+                    </ul>
 
                     <p>
-                        然后，展示一下将要放在场景内的一些部件：
-                        <a href="img/p004-4.png">
-                            <img class="img-responsive" src="img/p004-4.png" alt="一楼大厅座椅">
-                        </a>
-                        <span class="caption text-muted">一楼大厅座椅</span>
-                        <a href="img/p004-5.png">
-                            <img class="img-responsive" src="img/p004-5.png" alt="楼梯1">
-                        </a>
-                        <span class="caption text-muted">楼梯1</span>
-                        <a href="img/p004-6.png">
-                            <img class="img-responsive" src="img/p004-6.png" alt="楼梯2">
-                        </a>
-                        <span class="caption text-muted">楼梯2</span>
-                        <a href="img/p004-7.png">
-                            <img class="img-responsive" src="img/p004-7.png" alt="门1">
-                        </a>
-                        <span class="caption text-muted">门1</span>
-                        <a href="img/p004-8.png">
-                            <img class="img-responsive" src="img/p004-8.png" alt="门2">
-                        </a>
-                        <span class="caption text-muted">门2</span>
+                        具体每个技术的细节可以参考指向的个人博客。
                     </p>
 
+                    <hr>
+
+                    <h4>
+                        Demo场景展示：
+                    </h4>
+
                     <p>
-                        接下来的一周时间内，我们将对现有资源进行整合，并将其导入到unity场景中，然后进行进一步的优化处理操作（准备参考之前整理的相关文档资料）。
+                        <a href="img/p005-1.jpg">
+                            <img class="img-responsive" src="img/p005-1.jpg" alt="Demo场景">
+                        </a>
+                        <span class="caption text-muted">Demo场景</span>
+
+                        <a href="img/p005-2.jpg">
+                            <img class="img-responsive" src="img/p005-2.jpg" alt="场景的Hierarchy结构">
+                        </a>
+                        <span class="caption text-muted">场景的Hierarchy结构</span>
+                    </p>
+
+                    <hr>
+
+                    <h4>
+                        场景中的功能说明：
+                    </h4>
+
+                    <p>
+                        按下右手柄的触摸板，发射一条曲线，松开触摸板即可传送到曲线落地处。<br>
+                        不在NavMesh可移动范围内的位置无法传送。<br>
+                        传送采用冲刺方式而不是瞬间移动。
                     </p>
                 </div>
             </div>
