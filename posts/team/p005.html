@@ -129,6 +129,58 @@
                         不在NavMesh可移动范围内的位置无法传送。<br>
                         传送采用冲刺方式而不是瞬间移动。
                     </p>
+
+                    <hr>
+
+                    <h4>
+                        部分代码展示：
+                    </h4>
+
+                    <pre><code>
+    public class VRTK_HeightAdjustTeleport : VRTK_BasicTeleport
+    {
+        [Header("Height Adjust Options")]
+
+        [Tooltip("The layers to ignore when raycasting to find floors.")]
+        public LayerMask layersToIgnore = Physics.IgnoreRaycastLayer;
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            adjustYForTerrain = true;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+        }
+
+        protected override Vector3 GetNewPosition(Vector3 tipPosition, Transform target, bool returnOriginalPosition)
+        {
+            Vector3 basePosition = base.GetNewPosition(tipPosition, target, returnOriginalPosition);
+            if (!returnOriginalPosition)
+            {
+                basePosition.y = GetTeleportY(target, tipPosition);
+            }
+            return basePosition;
+        }
+
+        private float GetTeleportY(Transform target, Vector3 tipPosition)
+        {
+            var newY = playArea.position.y;
+            var heightOffset = 0.1f;
+            //Check to see if the tip is on top of an object
+            var rayStartPositionOffset = Vector3.up * heightOffset;
+            var ray = new Ray(tipPosition + rayStartPositionOffset, -playArea.up);
+            RaycastHit rayCollidedWith;
+            if (target && Physics.Raycast(ray, out rayCollidedWith, Mathf.Infinity, ~layersToIgnore))
+            {
+                newY = (tipPosition.y - rayCollidedWith.distance) + heightOffset;
+            }
+            return newY;
+        }
+    }
+                    </code></pre>
                 </div>
             </div>
         </div>

@@ -127,6 +127,126 @@
                         通过在左手手柄的触摸板上滑动手指来实现移动。<br>
                         如果与墙壁等障碍物发生碰撞则立即传送会最近的一个正常位置。
                     </p>
+
+                    <hr>
+
+                    <h4>
+                        部分代码展示：
+                    </h4>
+
+                    <pre><code>
+    public class VRTK_TouchpadControl : VRTK_ObjectControl
+    {
+        [Header("Touchpad Control Settings")]
+
+        [Tooltip("An optional button that has to be engaged to allow the touchpad control to activate.")]
+        public VRTK_ControllerEvents.ButtonAlias primaryActivationButton = VRTK_ControllerEvents.ButtonAlias.Touchpad_Touch;
+        [Tooltip("An optional button that when engaged will activate the modifier on the touchpad control action.")]
+        public VRTK_ControllerEvents.ButtonAlias actionModifierButton = VRTK_ControllerEvents.ButtonAlias.Touchpad_Press;
+        [Tooltip("Any input on the axis will be ignored if it is within this deadzone threshold. Between `0f` and `1f`.")]
+        public Vector2 axisDeadzone = new Vector2(0.2f, 0.2f);
+
+        protected bool touchpadFirstChange;
+        protected bool otherTouchpadControlEnabledState;
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            touchpadFirstChange = true;
+        }
+
+        protected override void ControlFixedUpdate()
+        {
+            ModifierButtonActive();
+            if (OutsideDeadzone(currentAxis.x, axisDeadzone.x) || currentAxis.x == 0f)
+            {
+                OnXAxisChanged(SetEventArguements(directionDevice.right, currentAxis.x, axisDeadzone.x));
+            }
+
+            if (OutsideDeadzone(currentAxis.y, axisDeadzone.y) || currentAxis.x == 0f)
+            {
+                OnYAxisChanged(SetEventArguements(directionDevice.forward, currentAxis.y, axisDeadzone.y));
+            }
+        }
+
+        protected override VRTK_ObjectControl GetOtherControl()
+        {
+            GameObject foundController = (VRTK_DeviceFinder.IsControllerLeftHand(gameObject) ? VRTK_DeviceFinder.GetControllerRightHand(false) : VRTK_DeviceFinder.GetControllerLeftHand(false));
+            if (foundController)
+            {
+                return foundController.GetComponent&lt;VRTK_TouchpadControl&gt;();
+            }
+            return null;
+        }
+
+        protected override void SetListeners(bool state)
+        {
+            if (controllerEvents)
+            {
+                if (state)
+                {
+                    controllerEvents.TouchpadAxisChanged += TouchpadAxisChanged;
+                    controllerEvents.TouchpadTouchEnd += TouchpadTouchEnd;
+                }
+                else
+                {
+                    controllerEvents.TouchpadAxisChanged -= TouchpadAxisChanged;
+                    controllerEvents.TouchpadTouchEnd -= TouchpadTouchEnd;
+                }
+            }
+        }
+
+        protected override bool IsInAction()
+        {
+            return (ValidPrimaryButton() && TouchpadTouched());
+        }
+
+        protected virtual bool OutsideDeadzone(float axisValue, float deadzoneThreshold)
+        {
+            return (axisValue > deadzoneThreshold || axisValue < -deadzoneThreshold);
+        }
+
+        protected virtual bool ValidPrimaryButton()
+        {
+            return (controllerEvents && (primaryActivationButton == VRTK_ControllerEvents.ButtonAlias.Undefined || controllerEvents.IsButtonPressed(primaryActivationButton)));
+        }
+
+        protected virtual void ModifierButtonActive()
+        {
+            modifierActive = (controllerEvents && actionModifierButton != VRTK_ControllerEvents.ButtonAlias.Undefined && controllerEvents.IsButtonPressed(actionModifierButton));
+        }
+
+        protected virtual bool TouchpadTouched()
+        {
+            return (controllerEvents && controllerEvents.IsButtonPressed(VRTK_ControllerEvents.ButtonAlias.Touchpad_Touch));
+        }
+
+        protected virtual void TouchpadAxisChanged(object sender, ControllerInteractionEventArgs e)
+        {
+            if (touchpadFirstChange && otherObjectControl && disableOtherControlsOnActive && e.touchpadAxis != Vector2.zero)
+            {
+                otherTouchpadControlEnabledState = otherObjectControl.enabled;
+                otherObjectControl.enabled = false;
+            }
+            currentAxis = (ValidPrimaryButton() ? e.touchpadAxis : Vector2.zero);
+
+            if (currentAxis != Vector2.zero)
+            {
+                touchpadFirstChange = false;
+            }
+        }
+
+        protected virtual void TouchpadTouchEnd(object sender, ControllerInteractionEventArgs e)
+        {
+            if (otherObjectControl && disableOtherControlsOnActive)
+            {
+                otherObjectControl.enabled = otherTouchpadControlEnabledState;
+            }
+            currentAxis = Vector2.zero;
+            touchpadFirstChange = true;
+        }
+    }
+                    </code></pre>
                 </div>
             </div>
         </div>
