@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="VR">
+    <meta name="author" content="ING VR团队">
+
+    <title>VR实训项目Demo: 物体的抓取与事件交互</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional fonts for this theme -->
+    <link href="../../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this theme -->
+    <link href="../../css/clean-blog.min.css" rel="stylesheet">
+    <link href="../../css/global.css" rel="stylesheet">
+
+    <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
+    <style>
+        .navbar-toggler {
+            z-index: 1;
+        }
+
+        @media (max-width: 576px) {
+            nav > .container {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="../../index.html">SDU-VR</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="../../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="../../project.html">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="../../members.html">Members</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="intro-header" style="background-image: url('../../img/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <div class="post-heading">
+                        <h1>VR实训项目Demo</h1>
+                        <h2 class="subheading">物体的抓取与事件交互</h2>
+                        <span class="meta">提交于 2017/05/24</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <p>
+                        在VR项目中，与虚拟物体的交互是一个十分重要的课题。为了之后在项目中能够进行更自然的物体交互，现试做一个Demo用于测试现有的物体交互功能。
+                    </p>
+
+                    <p>
+                        这个Demo中使用的技术包括：
+                    </p>
+
+                    <ul>
+                        <li>Interactable Object</li>
+                        <li>Controller Interacts</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4>
+                        Demo场景展示：
+                    </h4>
+
+                    <p>
+                        <a href="img/p007-1.jpg">
+                            <img class="img-responsive" src="img/p007-1.jpg" alt="Demo场景">
+                        </a>
+                        <span class="caption text-muted">Demo场景</span>
+
+                        <a href="img/p007-2.jpg">
+                            <img class="img-responsive" src="img/p007-2.jpg" alt="场景的Hierarchy结构">
+                        </a>
+                        <span class="caption text-muted">场景的Hierarchy结构</span>
+                    </p>
+
+                    <hr>
+
+                    <h4>
+                        场景中的功能说明：
+                    </h4>
+
+                    <p>
+                        使用右手手柄触碰物体后按下抓握按钮实现物体的抓取。<br>
+                        在抓握状态下或者未抓取状态下触摸物体并按下扳机键，将触发物体的事件，在控制台输出信息。<br>
+                        在按下抓握键的情况下去触碰物体将可以推动物体。
+                    </p>
+
+                    <hr>
+
+                    <h4>
+                        部分代码展示：
+                    </h4>
+
+                    <pre><code>
+using UnityEngine;
+using VRTK;
+
+public class Demo_Sphere : VRTK_InteractableObject {
+
+    public override void StartUsing(GameObject currentUsingObject) {
+        base.StartUsing(currentUsingObject);
+        Debug.Log("Using Object!");
+    }
+
+    public override void StopUsing(GameObject currentUsingObject) {
+        base.StopUsing(currentUsingObject);
+        Debug.Log("Stop Using Object!");
+    }
+}
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <a href="https://github.com/SDU-VR/SDU-VR" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; SDU-VR 2017.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery Version 3.1.1 -->
+    <script src="../../lib/jquery/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="../../lib/tether/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
